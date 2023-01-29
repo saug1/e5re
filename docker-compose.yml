@@ -1,33 +1,44 @@
+# 主节点
 version: '3.3'
 services:
-  master: 
-    image: crawlabteam/crawlab:latest
-    container_name: crawlab_example_master
+  master:
+    image: crawlabteam/crawlab
+    container_name: crawlab_master
+    restart: always
     environment:
-      CRAWLAB_NODE_MASTER: "Y"
-      CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_NODE_MASTER: Y  # Y: 主节点
+      CRAWLAB_MONGO_HOST: mongo  # mongo host address. 在 Docker-Compose 网络中，直接引用 service 名称
+      CRAWLAB_MONGO_PORT: 27017  # mongo port 
+      CRAWLAB_MONGO_DB: crawlab  # mongo database 
+      CRAWLAB_MONGO_USERNAME: username  # mongo username
+      CRAWLAB_MONGO_PASSWORD: password  # mongo password 
+      CRAWLAB_MONGO_AUTHSOURCE: admin  # mongo auth source 
     volumes:
-      - "./.crawlab/master:/root/.crawlab"
-    ports:    
-      - "8080:8080"
+      - "/opt/crawlab/master:/data"  # 持久化 crawlab 数据
+    ports:
+      - "8080:8080"  # 开放 api 端口
+      - "9666:9666"  # 开放 grpc 端口
     depends_on:
       - mongo
 
-  worker01: 
-    image: crawlabteam/crawlab:latest
-    container_name: crawlab_example_worker01
-    environment:
-      CRAWLAB_NODE_MASTER: "N"
-      CRAWLAB_GRPC_ADDRESS: "master"
-      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
-    volumes:
-      - "./.crawlab/worker01:/root/.crawlab"
-    depends_on:
-      - master
-
-
-
   mongo:
     image: mongo:4.2
-    container_name: crawlab_example_mongo
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: username  # mongo username
+      MONGO_INITDB_ROOT_PASSWORD: password  # mongo password
+    volumes:
+      - "/opt/crawlab/mongo/data/db:/data/db"  # 持久化 mongo 数据
+    ports:
+      - "27017:27017"  # 开放 mongo 端口到宿主机
+      
+  worker:
+    image: crawlabteam/crawlab
+    container_name: crawlab_worker
+    restart: always
+    environment:
+      CRAWLAB_NODE_MASTER: N  # N: 工作节点
+      CRAWLAB_GRPC_ADDRESS: master-x1769803359.cloud.okteto.net:9666  # grpc address
+      CRAWLAB_FS_FILER_URL: https://master-x1769803359.cloud.okteto.net:8080/api/filer  # seaweedfs api
+    volumes:
+      - "/opt/crawlab/master:/data"  # 持久化 crawlab 数据
