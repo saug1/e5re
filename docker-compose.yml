@@ -25,17 +25,7 @@ services:
     depends_on:
       - master
 
-  worker02: 
-    image: crawlabteam/crawlab:latest
-    container_name: crawlab_example_worker02
-    environment:
-      CRAWLAB_NODE_MASTER: "N"
-      CRAWLAB_GRPC_ADDRESS: "master"
-      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
-    volumes:
-      - "./.crawlab/worker02:/root/.crawlab"
-    depends_on:
-      - master
+
 
   mongo:
     image: mongo:4.2
