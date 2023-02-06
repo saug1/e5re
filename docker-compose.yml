@@ -7,7 +7,7 @@ services:
       CRAWLAB_NODE_MASTER: "Y"
       CRAWLAB_MONGO_HOST: "mongo"
     volumes:
-      - "./.crawlab/master:/root/.crawlab"
+      - crawlab-pvc:/data
     ports:    
       - "8080:8080"
     depends_on:
@@ -17,3 +17,8 @@ services:
     image: mongo:4.2
     container_name: crawlab_example_mongo
     restart: always
+    
+volumes:
+  crawlab-pvc:
+    driver_opts:
+      class: csi-okteto-standard
