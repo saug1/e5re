@@ -8,7 +8,6 @@ services:
       - "e5re-pvc:/app/Deploy"
     ports:    
       - "1066:1066"
-    
 volumes:
   e5re-pvc:
     driver_opts:
