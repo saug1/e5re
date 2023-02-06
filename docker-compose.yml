@@ -1,26 +1,15 @@
 version: '3.3'
 services:
   master: 
-    image: crawlabteam/crawlab:latest
-    container_name: crawlab_example_master
+    image: hanhongyong/ms365-e5-renew-x:latest
+    container_name: e5re_master
     environment:
-      CRAWLAB_NODE_MASTER: "Y"
-      CRAWLAB_MONGO_HOST: "mongo"
     volumes:
-      - "crawlab-pvc:/data"
+      - "e5re-pvc:/app/Deploy"
     ports:    
-      - "8080:8080"
-    depends_on:
-      - mongo
-
-  mongo:
-    image: mongo:4.2
-    container_name: crawlab_example_mongo
-    restart: always
-    volumes:
-      - "crawlab-pvc:/data/db"
+      - "1066:1066"
     
 volumes:
-  crawlab-pvc:
+  e5re-pvc:
     driver_opts:
       class: csi-okteto-standard
