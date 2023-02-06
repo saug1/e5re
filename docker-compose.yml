@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  master: 
+  e5re: 
     image: hanhongyong/ms365-e5-renew-x:latest
     container_name: e5re_master
     environment:
