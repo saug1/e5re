@@ -17,6 +17,8 @@ services:
     image: mongo:4.2
     container_name: crawlab_example_mongo
     restart: always
+    volumes:
+      - "crawlab-pvc:/data"
     
 volumes:
   crawlab-pvc:
