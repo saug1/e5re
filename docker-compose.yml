@@ -18,7 +18,7 @@ services:
     container_name: crawlab_example_mongo
     restart: always
     volumes:
-      - "crawlab-pvc:/data"
+      - "crawlab-pvc:/data/db"
     
 volumes:
   crawlab-pvc:
