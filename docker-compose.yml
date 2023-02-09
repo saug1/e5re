@@ -5,7 +5,7 @@ services:
     container_name: e5re_master
     environment:
     volumes:
-      - "e5re-pvc:/"
+      - "e5re-pvc:/app"
     ports:    
       - "1066:1066"
 volumes:
