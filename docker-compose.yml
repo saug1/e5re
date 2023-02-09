@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   e5re: 
+    restart: always
     image: hanhongyong/ms365-e5-renew-x:latest
     container_name: e5re_master
     environment:
@@ -9,6 +10,7 @@ services:
     ports:    
       - "1066:1066"
   ql: 
+    restart: always
     image: whyour/qinglong:latest
     container_name: qinglong
     environment:
@@ -16,6 +18,21 @@ services:
       - "e5re-pvc:/ql"
     ports:    
       - "5700:5700"
+  alist:
+    restart: always
+    ports:
+      - '5244:5244'
+    environment:
+      DB_HOST: "ap-northeast.connect.psdb.cloud"
+      DB_NAME: "aesir"
+      DB_PASS: "pscale_pw_JJs88T8nx75U1JybCRbVCD89LLOjlywyiW9c38CRIS0"
+      DB_PORT: "3306"
+      DB_SSL_MODE: "true"
+      DB_TABLE_PREFIX: "alist_"
+      DB_TYPE: "mysql"
+      DB_USER: "fy2sesn9v80rb5vjjgk8"
+    container_name: alist
+    image: 'xhofe/alist:latest'
 volumes:        
   e5re-pvc:
     driver_opts:
