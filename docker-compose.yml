@@ -23,8 +23,8 @@ services:
     ports:
       - '5244:5244'
     environment:
-      DB_HOST: "ap-northeast.connect.psdb.cloud"
-      DB_NAME: "aesir"
+      DB_HOST: ""
+      DB_NAME: ""
       DB_PASS: ""
       DB_PORT: "3306"
       DB_SSL_MODE: "true"
