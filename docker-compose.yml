@@ -8,7 +8,15 @@ services:
       - "e5re-pvc:/app"
     ports:    
       - "1066:1066"
-volumes:
+volumes:  qinglong: 
+    image: whyour/qinglong:latest
+    container_name: qinglong
+    environment:
+    volumes:
+      - "e5re-pvc:/ql"
+    ports:    
+      - "5700:5700"
+      
   e5re-pvc:
     driver_opts:
       class: csi-okteto-standard
