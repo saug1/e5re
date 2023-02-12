@@ -24,13 +24,13 @@ services:
       - '5244:5244'
     environment:
       DB_HOST: "ap-northeast.connect.psdb.cloud"
-      DB_NAME: "aesir"
-      DB_PASS: "pscale_pw_JJs88T8nx75U1JybCRbVCD89LLOjlywyiW9c38CRIS0"
+      DB_NAME: ""
+      DB_PASS: ""
       DB_PORT: "3306"
       DB_SSL_MODE: "true"
       DB_TABLE_PREFIX: "alist_"
       DB_TYPE: "mysql"
-      DB_USER: "fy2sesn9v80rb5vjjgk8"
+      DB_USER: ""
     container_name: alist
     image: 'xhofe/alist:latest'
 volumes:        
