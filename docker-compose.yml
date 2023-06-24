@@ -14,14 +14,10 @@ services:
     ports:
       - '5244:5244'
     environment:
-      DB_HOST: " ap-southeast.connect.psdb.cloud"
-      DB_NAME: "aesir"
-      DB_PASS: ""
       DB_PORT: "3306"
       DB_SSL_MODE: "true"
       DB_TABLE_PREFIX: "alist_"
       DB_TYPE: "mysql"
-      DB_USER: "fy2sesn9v80rb5vjjgk8"
     container_name: alist
     image: 'xhofe/alist:latest'
 volumes:        
