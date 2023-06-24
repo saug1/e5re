@@ -1,14 +1,5 @@
 version: '3.3'
 services:
-  e5re: 
-    restart: always
-    image: gladtbam/ms365_e5_renewx:latest
-    container_name: e5re_master
-    environment:
-    volumes:
-      - "e5re-pvc:/renewx"
-    ports:    
-      - "1066:1066"
   alist:
     restart: always
     volumes:
