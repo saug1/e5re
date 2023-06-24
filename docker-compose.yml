@@ -16,7 +16,7 @@ services:
     environment:
       DB_HOST: " ap-southeast.connect.psdb.cloud"
       DB_NAME: "aesir"
-      DB_PASS: "pscale_pw_JJs88T8nx75U1JybCRbVCD89LLOjlywyiW9c38CRIS0"
+      DB_PASS: ""
       DB_PORT: "3306"
       DB_SSL_MODE: "true"
       DB_TABLE_PREFIX: "alist_"
