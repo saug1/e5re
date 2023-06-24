@@ -14,10 +14,6 @@ services:
     ports:
       - '5244:5244'
     environment:
-      DB_PORT: "3306"
-      DB_SSL_MODE: "true"
-      DB_TABLE_PREFIX: "alist_"
-      DB_TYPE: "mysql"
     container_name: alist
     image: 'xhofe/alist:latest'
 volumes:        
