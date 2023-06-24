@@ -12,7 +12,7 @@ services:
   alist:
     restart: always
     volumes:
-      - "e5re-pvc:/opt"
+      - "e5re-pvc:/opt/alist/data"
     ports:
       - '5244:5244'
     environment:
